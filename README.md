@@ -1,18 +1,153 @@
-# Getting Started with Create React App
+# Vehicle Tracking Map Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time vehicle tracking application built with React and Leaflet that visualizes vehicle movement on an interactive map with configurable settings and detailed vehicle information.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 1. Interactive Map Display
+- Real-time vehicle tracking with smooth animations
+- Street-level map view using OpenStreetMap
+- Vehicle marker with directional rotation based on movement
+- Route visualization with polyline tracking
 
-### `npm start`
+### 2. Vehicle Information Modal
+When hovering over the vehicle marker, a detailed information card displays:
+- Current speed (km/h)
+- Total distance traveled
+- Battery life percentage
+- Connection status (WIRELESS/WIRED)
+- Current timestamp
+- Vehicle status (Running/Stopped)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. Configuration Panel
+A stylish configuration card located at the bottom-left of the map allows users to:
+- Select connection type (WIRELESS/WIRED)
+- Choose time period (Today/Yesterday/Last Week)
+- Apply settings with a prominent SHOW button
+- Minimize/maximize the configuration panel
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 4. Playback Controls
+- Play/Pause button to control vehicle movement
+- Reset button to restart the route
+- Speed control with options (0.5x, 1x, 2x, 4x)
+- Real-time speed and position information
+
+## Technical Implementation
+
+### Map Features
+- Built using React-Leaflet for map integration
+- Custom car icon with directional rotation
+- Smooth animations for vehicle movement
+- Route visualization using polylines
+
+### Vehicle Tracking
+- Real-time position updates
+- Directional changes based on route
+- Speed calculations using Haversine formula
+- Timestamp-based movement simulation
+
+### User Interface
+- Modern glass-morphism design
+- Responsive layout
+- Smooth animations and transitions
+- Mobile-friendly interface
+
+## Route Data Structure
+
+The application uses a JSON format for route data:
+```json
+{
+  "latitude": number,
+  "longitude": number,
+  "timestamp": string,
+  "speed": number,
+  "direction": string
+}
+```
+
+Direction values: "N", "S", "E", "W", "NE", "NW", "SE", "SW"
+
+## Getting Started
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+```
+
+2. Install dependencies:
+```bash
+cd vehicle-map
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Dependencies
+
+- React
+- React-Leaflet
+- Leaflet
+- Other dependencies listed in package.json
+
+## Project Structure
+
+```
+vehicle-map/
+├── public/
+│   └── dummy-route.json    # Sample route data
+├── src/
+│   ├── components/
+│   │   ├── MapView.js      # Main map component
+│   │   ├── VehicleTooltip.js  # Vehicle info tooltip
+│   │   └── ConfigureCard.js   # Configuration panel
+│   ├── styles/
+│   │   ├── MapView.css
+│   │   ├── VehicleTooltip.css
+│   │   └── ConfigureCard.css
+│   ├── App.js
+│   └── index.js
+└── README.md
+```
+
+## Customization
+
+### Route Data
+You can customize the vehicle route by modifying the `dummy-route.json` file in the public directory. Ensure each point includes:
+- Latitude and longitude coordinates
+- Timestamp
+- Speed
+- Direction
+
+### Styling
+The application uses separate CSS modules for each component, making it easy to customize:
+- `MapView.css` - Map container and controls styling
+- `VehicleTooltip.css` - Vehicle information popup styling
+- `ConfigureCard.css` - Configuration panel styling
+
+## Browser Support
+
+The application is tested and supported in:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
 
 ### `npm test`
 
@@ -39,32 +174,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
